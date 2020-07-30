@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aa.repository.AccountRepository">
-
+    <cache></cache>
     <insert id="save" parameterType="com.aa.entity.Account">
         insert into t_account(username,password,age) values(#{username},#{password},#{age})
  </insert>
@@ -45,5 +45,23 @@
 
     <select id="findNameById" parameterType="int" resultType="String">
         select username from t_account where id = #{id}
+    </select>
+
+    <select id="findByAccount" parameterType="com.aa.entity.Account" resultType="com.aa.entity.Account">
+        select * from t_account
+        <where>
+            <if test="id!=0">
+                id=#{id}
+            </if>
+            <if test="username!=null">
+                and username=#{username}
+            </if>
+            <if test="password!=null">
+                and password=#{password}
+            </if>
+            <if test="age!=0">
+                and age=#{age}
+            </if>
+        </where>
     </select>
 </mapper>

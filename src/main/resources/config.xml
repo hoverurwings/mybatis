@@ -2,6 +2,15 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+    <settings>
+        <!-- 打印sql -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!-- 开启延迟加载（需要将多表关联拆分成单表） -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 开启二级缓存 -->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
     <!-- 配置MyBatis运⾏环境 -->
     <environments default="development">
         <environment id="development">

@@ -16,4 +16,5 @@ public interface AccountRepository {
     public int count();
     public Integer count2();
     public String findNameById(int id);
+    public Account findByAccount(Account account);
 }
